@@ -7,11 +7,6 @@
 #include <sys/ptrace.h>
 #include <sys/user.h>
 
-//
-// NOTE: THIS CODE IS INCOMPLETE AND DESIGNED TO BE A STARTER
-// SKELETON
-//
-
 int main (int argc, char* argv[])
 {
 
@@ -24,10 +19,7 @@ int main (int argc, char* argv[])
 
     int waitStat = 0;
 
-    //
-    // Use appropriate ptrace() call here
-    // Remember, this program takes a single argument
-    //
+   
 	pid_t pid = atoi(argv[1]);
 
 	if ((ptrace(PTRACE_ATTACH, pid, NULL, NULL)) < 0) {
@@ -44,16 +36,11 @@ int main (int argc, char* argv[])
 	}
 
 
-	//
-	// Execute this in a loop
-	//
 	while (1)
 	{
 
 		int signum = 0;
-	//
-	// Add appropriate ptrace() calls here
-	//
+
 		printf ("Getting Registers\n");
 		if ((ptrace (PTRACE_GETREGS, pid, NULL, &regs)) < 0)
 		{
@@ -72,18 +59,7 @@ int main (int argc, char* argv[])
 		if (signum == SIGTRAP)
 		{
 			signum = 0;
-		//
-		// Add appropriate ptrace() call here
-		// Hint: print out the following register values
-		//
-		// RAX (please print both orig_rax and rax)
-		// RCX
-		// RDX
-		// RSP
-		// RBP
-		// R8
-		// R9
-		// RIP
+
 	
 			printf("RAX:\t%llx\n", regs.rax);
 			printf("RCX:\t%llx\n", regs.rcx);
