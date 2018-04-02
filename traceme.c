@@ -5,14 +5,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-
-/***********************************************************
-*
-* HW program. You will trace this program using
-* the ptrace() API to single step and trace
-* ALL system calls
-*
-***********************************************************/
 int function( char * a )
 {
 
